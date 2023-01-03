@@ -9,8 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.4",
+    "react-pro-sidebar": "0.7.1",
+    "react-router-dom": "6",
+    "remark-breaks": "^3.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

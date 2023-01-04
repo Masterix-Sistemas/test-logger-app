@@ -61,9 +61,7 @@ const Sidebar = () => {
           {/* Hamburger menu */}
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
-            icon={
-              isCollapsed ? <MenuOutlinedIcon fontSize="large" /> : undefined
-            }
+            icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
               margin: '10px 0 20px 0',
               color: colors.grey[300],
@@ -95,6 +93,8 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
+            <Divider variant="middle" sx={{ mt: '12px' }} />
+
             <Typography
               variant="h6"
               color={colors.grey[300]}

@@ -1,11 +1,11 @@
 import { Box, Typography } from '@mui/material';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
 import { useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import api from '../../services/axios';
 import { tokens } from '../../theme';
 
-interface DataProps {
+export interface DataProps {
   id: number;
   testTitle: string;
   testSummary?: string;
@@ -29,8 +29,14 @@ const Dashboard = () => {
   const [data, setData] = useState<DataProps[]>([]);
   const colors = tokens();
 
-  const columns = [
-    { field: 'id', headerName: 'ID' },
+  const columns: GridColDef[] = [
+    {
+      field: 'id',
+      headerName: 'ID',
+      renderCell: (params) => {
+        return <a href={`/test/${params.row.id}`}>{params.row.id}</a>;
+      },
+    },
     { field: 'testTitle', headerName: 'Titulo do teste', flex: 1 },
     { field: 'testSummary', headerName: 'Resumo do teste', flex: 1 },
     { field: 'testPriority', headerName: 'Prioridade do teste', flex: 1 },
@@ -41,7 +47,6 @@ const Dashboard = () => {
   useEffect(() => {
     const dataFetch = async () => {
       const { data } = await api.get('/api/testCase');
-      console.log(data);
 
       setData(data);
     };

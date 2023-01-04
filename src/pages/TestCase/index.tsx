@@ -37,7 +37,7 @@ const TestCase = () => {
 
   const handleFormSubmit = async (values: FormValues) => {
     const { data } = await api.post<FormValues>('/api/testCase', values);
-    window.location.href = '/test';
+    window.location.reload();
   };
 
   return (

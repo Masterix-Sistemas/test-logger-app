@@ -263,6 +263,7 @@ const TestCase = () => {
                 <MenuItem value={2}>Ouvidoria</MenuItem>
                 <MenuItem value={3}>Ouvidoria identificada</MenuItem>
                 <MenuItem value={5}>Admin</MenuItem>
+                <MenuItem value={6}>Tarefas e demandas</MenuItem>
               </TextField>
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">

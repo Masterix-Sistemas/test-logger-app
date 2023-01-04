@@ -34,7 +34,7 @@ const Dashboard = () => {
       field: 'id',
       headerName: 'ID',
       renderCell: (params) => {
-        return <a href={`/test/${params.row.id}`}>{params.row.id}</a>;
+        return <a href={`/test/${params.row.id}`}>{params.row.id} ver</a>;
       },
     },
     { field: 'testTitle', headerName: 'Titulo do teste', flex: 1 },

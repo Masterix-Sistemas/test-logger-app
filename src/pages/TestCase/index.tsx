@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import Header from '../../components/Header';
 import api from '../../services/axios';
 
-interface FormValues {
+export interface FormValues {
   testTitle: string;
   testSummary?: string;
   testSteps?: string;

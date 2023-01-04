@@ -1,5 +1,7 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
+import { Route, Routes } from 'react-router-dom';
 import Sidebar from './pages/global/Sidebar';
+import TestCase from './pages/TestCase';
 import theme from './theme';
 
 function App() {
@@ -8,7 +10,11 @@ function App() {
       <CssBaseline />
       <div className="app">
         <Sidebar />
-        <main className="content"></main>
+        <main className="content">
+          <Routes>
+            <Route path="/test" element={<TestCase />} />
+          </Routes>
+        </main>
       </div>
     </ThemeProvider>
   );

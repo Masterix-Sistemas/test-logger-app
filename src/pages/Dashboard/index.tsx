@@ -50,7 +50,7 @@ const Dashboard = () => {
 
   return (
     <Box m="20px">
-      <Header title="Dashboard" />
+      <Header title="Dashboard" subtitle="Bem vindo Administrador" />
       <Box display="flex" alignItems="center" gap="16px">
         <Typography variant="h5">
           Total de testes realizados: {data.length}

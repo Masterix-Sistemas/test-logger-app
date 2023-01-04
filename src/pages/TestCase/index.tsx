@@ -1,5 +1,6 @@
 import { Box, Button, MenuItem, TextField, useMediaQuery } from '@mui/material';
 import { Formik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import Header from '../../components/Header';
 import api from '../../services/axios';
@@ -20,6 +21,7 @@ export interface FormValues {
 
 const TestCase = () => {
   const isNonMobile = useMediaQuery('(min-width: 600px)');
+  const navigate = useNavigate();
 
   const initialValues: FormValues = {
     testTitle: '',
@@ -37,7 +39,7 @@ const TestCase = () => {
 
   const handleFormSubmit = async (values: FormValues) => {
     const { data } = await api.post<FormValues>('/api/testCase', values);
-    window.location.reload();
+    navigate(0);
   };
 
   return (

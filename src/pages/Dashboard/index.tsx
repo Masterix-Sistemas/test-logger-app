@@ -19,6 +19,10 @@ interface DataProps {
   moduleId: number;
   input: string;
   userId: string;
+  Module: {
+    id: number;
+    name: string;
+  };
 }
 
 const Dashboard = () => {
@@ -35,8 +39,6 @@ const Dashboard = () => {
   ];
 
   useEffect(() => {
-    console.log('Fetching data...');
-
     const dataFetch = async () => {
       const { data } = await api.get('/api/testCase');
       console.log(data);
@@ -68,6 +70,8 @@ const Dashboard = () => {
             rows={data}
             columns={columns}
             components={{ Toolbar: GridToolbar }}
+            checkboxSelection
+            disableSelectionOnClick
           />
         )}
       </Box>

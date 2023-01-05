@@ -42,6 +42,7 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
+        borderRight: `1px solid ${colors.grey[700]}`,
         '& .pro-sidebar-inner': {
           background: `${colors.grey[800]} !important`,
         },
@@ -83,7 +84,6 @@ const Sidebar = () => {
               </Box>
             )}
           </MenuItem>
-          <Divider variant="middle" />
           {/* Menu Items */}
           <Box mt="16px" display="flex" flexDirection="column" gap="4px">
             <Item

@@ -1,6 +1,8 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
 import { useEffect, useState } from 'react';
+import { Pie } from 'react-chartjs-2';
 import Header from '../../components/Header';
 import api from '../../services/axios';
 import { tokens } from '../../theme';
@@ -28,6 +30,27 @@ export interface DataProps {
 const Dashboard = () => {
   const [data, setData] = useState<DataProps[]>([]);
   const colors = tokens();
+  const successTestCount = data.filter(
+    (test) => test.status === 'SUCCESS'
+  ).length;
+  const failureTestCount = data.filter(
+    (test) => test.status === 'FAILURE'
+  ).length;
+
+  ChartJS.register(ArcElement, Tooltip, Legend);
+
+  const chartData = {
+    labels: ['Testes que passaram', 'Testes com falhas'],
+    datasets: [
+      {
+        label: '# testes',
+        data: [successTestCount, failureTestCount],
+        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+        borderWidth: 1,
+      },
+    ],
+  };
 
   const columns: GridColDef[] = [
     {
@@ -56,19 +79,15 @@ const Dashboard = () => {
   return (
     <Box m="20px">
       <Header title="Dashboard" subtitle="Bem vindo Administrador" />
-      <Box display="flex" alignItems="center" gap="16px">
-        <Typography variant="h5">
+      <Box mt="40px" mb="40px" width="340px">
+        <Typography variant="h5" mb="16px">
           Total de testes realizados: {data.length}
         </Typography>
-        <Typography variant="h5" color={colors.primary[400]}>
-          Total de testes que passaram:
-          {data.filter((test) => test.status === 'SUCCESS').length}
-        </Typography>
-        <Typography variant="h5" color={colors.red[500]}>
-          Total de testes com falhas:
-          {data.filter((test) => test.status === 'FAILURE').length}
-        </Typography>
+        <Paper elevation={2} sx={{ padding: '16px' }}>
+          <Pie data={chartData} />
+        </Paper>
       </Box>
+      <Box display="flex" alignItems="center" gap="16px"></Box>
       <Box height="75vh" m="40px 0 0 0">
         {data && (
           <DataGrid

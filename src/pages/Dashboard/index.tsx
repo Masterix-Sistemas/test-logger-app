@@ -1,4 +1,4 @@
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, Chip, Paper, Typography } from '@mui/material';
 import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
 import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
 import moment from 'moment';
@@ -72,7 +72,18 @@ const Dashboard = () => {
     },
     { field: 'testSummary', headerName: 'Resumo do teste', flex: 1 },
     { field: 'testPriority', headerName: 'Prioridade do teste', flex: 1 },
-    { field: 'status', headerName: 'Status', flex: 1 },
+    {
+      field: 'status',
+      headerName: 'Status',
+      flex: 1,
+      renderCell: (params) => (
+        <Chip
+          label={params.row.status}
+          color={params.row.status === 'SUCCESS' ? 'success' : 'error'}
+          size="small"
+        />
+      ),
+    },
     {
       field: 'testDesignedDate',
       headerName: 'Data de criação',

@@ -1,4 +1,5 @@
 import { Logout, Settings } from '@mui/icons-material';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import {
   Avatar,
   IconButton,
@@ -39,6 +40,14 @@ const Topbar = () => {
           alignItems="center"
           width="100%"
         >
+          <Tooltip title="Github">
+            <IconButton
+              sx={{ ml: 2 }}
+              href="https://github.com/Masterix-Sistemas/test-logger"
+            >
+              <GitHubIcon fontSize="medium" />
+            </IconButton>
+          </Tooltip>
           <Tooltip title="Configurações">
             <IconButton
               onClick={handleClick}

@@ -1,6 +1,7 @@
 import { Box, Paper, Typography } from '@mui/material';
 import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
 import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
+import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import Header from '../../components/Header';
@@ -61,10 +62,24 @@ const Dashboard = () => {
       },
     },
     { field: 'testTitle', headerName: 'Titulo do teste', flex: 1 },
+    {
+      field: 'Module',
+      headerName: 'Modulo',
+      flex: 1,
+      renderCell: (params) => {
+        return <Typography>{params.row.Module.name}</Typography>;
+      },
+    },
     { field: 'testSummary', headerName: 'Resumo do teste', flex: 1 },
     { field: 'testPriority', headerName: 'Prioridade do teste', flex: 1 },
     { field: 'status', headerName: 'Status', flex: 1 },
-    { field: 'testDesignedDate', headerName: 'Data de criação', flex: 1 },
+    {
+      field: 'testDesignedDate',
+      headerName: 'Data de criação',
+      flex: 1,
+      renderCell: (params) =>
+        moment(params.row.testDesignedDate).format('DD/MM/YYYY'),
+    },
   ];
 
   useEffect(() => {
